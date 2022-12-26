@@ -14,7 +14,8 @@ export default async function handler(req: NextRequest) {
 
   const { searchParams } = new URL(req.url);
   const title = searchParams.get('title');
-  const eyecatch = searchParams.get('eyecatch');
+  const img = searchParams.get('img');
+  const date = searchParams.get('date');
 
   return new ImageResponse(
     (
@@ -27,18 +28,19 @@ export default async function handler(req: NextRequest) {
           textAlign: 'center',
           alignItems: 'center',
           justifyContent: 'center',
+          color: 'white',
           position: 'relative',
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={eyecatch!} alt={'eyecatch'} width={1200} height={630} style={{ objectFit: 'cover' }} />
+        <img src={img!} alt={'eyecatch'} width={1200} height={630} style={{ objectFit: 'cover' }} />
         <div
           style={{
             position: 'absolute',
             width: '100%',
             height: '100%',
             backdropFilter: 'blur(8px)',
-            backgroundColor: 'rgba(255, 255, 255, 0.25)',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
           }}
         ></div>
         <h2
@@ -68,7 +70,7 @@ export default async function handler(req: NextRequest) {
               textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
             }}
           >
-            2022.10.22
+            {date}
           </h2>
           <div
             style={{

@@ -3,6 +3,7 @@ import { MicroCMSListContent } from 'microcms-js-sdk/dist/cjs/types';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
+import { formatDate } from '@/modules/date/formatDate';
 import { BlogPost } from '@/modules/microCMS/BlogPost';
 import { createSummary } from '@/modules/microCMS/createSummary';
 import { client } from '@/modules/microCMS/microcms';
@@ -26,7 +27,9 @@ const Post: NextPage<Props> = ({ post }) => {
         <meta property="og:description" content={summary} />
         <meta
           property="og:image"
-          content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/post-og?title=${post.title}&eyecatch=${post.eyecatch.url}`}
+          content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/post-og?title=${post.title}&img=${
+            post.eyecatch.url
+          }&date=${formatDate(post.updatedAt)}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="システム屋さいじょう" />
