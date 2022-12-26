@@ -24,7 +24,10 @@ const Post: NextPage<Props> = ({ post }) => {
         <meta property="og:url" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/posts/${post.id}`} />
         <meta property="og:title" content={`${post.title} - システム屋さいじょう`} />
         <meta property="og:description" content={summary} />
-        <meta property="og:image" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/post-og?id=${post.id}`} />
+        <meta
+          property="og:image"
+          content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/post-og?title=${post.title}&eyecatch=${post.eyecatch.url}`}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="システム屋さいじょう" />
         <meta property="og:locale" content="ja_JP" />

@@ -25,7 +25,6 @@ export default function MyApp(props: MyAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <title>システム屋さいじょう</title>
       </Head>
       {process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' && (
         <GoogleTagManager googleTagManagerId={googleTagManagerId} />

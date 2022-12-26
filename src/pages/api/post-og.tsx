@@ -1,9 +1,6 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
-import { BlogPost } from '@/modules/microCMS/BlogPost';
-import { client } from '@/modules/microCMS/microcms';
-
 export const config = {
   runtime: 'experimental-edge',
 };
@@ -16,40 +13,86 @@ export default async function handler(req: NextRequest) {
   const fontData = await font;
 
   const { searchParams } = new URL(req.url);
-  const postId = searchParams.get('id');
-
-  const post = await client.getListDetail<BlogPost>({ endpoint: 'blogs', contentId: postId! });
+  const title = searchParams.get('title');
+  const eyecatch = searchParams.get('eyecatch');
 
   return new ImageResponse(
     (
-      <div style={{ display: 'flex', position: 'relative' }}>
-        <img src={post.eyecatch.url} alt={'eyecatch'} height={630} width={1200} style={{ objectFit: 'cover' }} />
+      <div
+        style={{
+          fontSize: 50,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          textAlign: 'center',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={eyecatch!} alt={'eyecatch'} width={1200} height={630} style={{ objectFit: 'cover' }} />
         <div
           style={{
             position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '420px',
-            width: '990px',
-
+            width: '100%',
+            height: '100%',
             backdropFilter: 'blur(8px)',
-            backgroundColor: 'rgba(255, 255, 255, 0.5)',
-
-            borderRadius: '16px',
+            backgroundColor: 'rgba(255, 255, 255, 0.25)',
+          }}
+        ></div>
+        <h2
+          style={{
+            position: 'absolute',
+            width: '100%',
+            fontSize: 60,
+            textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <p
+          {title}
+        </h2>
+        <div
+          style={{
+            display: 'flex',
+            position: 'absolute',
+            width: '100%',
+            bottom: 0,
+            paddingLeft: 30,
+            paddingRight: 30,
+            justifyContent: 'space-between',
+          }}
+        >
+          <h2
             style={{
-              fontSize: '96px',
+              fontSize: 40,
+              textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
             }}
           >
-            {post.title}
-          </p>
+            2022.10.22
+          </h2>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://github.com/saijo-shota-biz.png`}
+              alt={'avatar'}
+              width="60"
+              height="60"
+              style={{ borderRadius: 60, marginRight: 10 }}
+            />
+            <h2
+              style={{
+                fontSize: 40,
+                textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+              }}
+            >
+              さいじょー
+            </h2>
+          </div>
         </div>
       </div>
     ),

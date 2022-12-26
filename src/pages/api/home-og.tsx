@@ -26,12 +26,7 @@ export default async function handler(req: NextRequest) {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          width="256"
-          height="256"
-          src={`https://avatars.githubusercontent.com/u/60728259?s=400&u=02fe6e5d330a54046e32277e2d434d5fe6813dad&v=4`}
-          alt={'avatar'}
-        />
+        <img width="256" height="256" src={`https://github.com/saijo-shota-biz.png`} alt={'avatar'} />
         <p
           style={{
             fontWeight: 'bold',
