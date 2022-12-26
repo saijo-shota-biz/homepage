@@ -5,23 +5,19 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-// const font = fetch(new URL('../../../public/assets/MPLUSRounded1c-Bold-subset.woff', import.meta.url)).then((res) =>
-//   res.arrayBuffer()
-// );
+const font = fetch(new URL('../../../public/assets/MPLUSRounded1c-Bold-subset.woff', import.meta.url)).then((res) =>
+  res.arrayBuffer()
+);
 
 export default async function handler(req: NextRequest) {
-  // const fontData = await font;
+  const fontData = await font;
 
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get('title');
-  const img = searchParams.get('img');
-  const date = searchParams.get('date');
 
   return new ImageResponse(
     (
       <div
         style={{
-          fontSize: 50,
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -29,11 +25,12 @@ export default async function handler(req: NextRequest) {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
+          textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           position: 'relative',
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={img!} alt={'eyecatch'} width={1200} height={630} style={{ objectFit: 'cover' }} />
+        <img src={searchParams.get('img')!} alt={'eyecatch'} width={1200} height={630} style={{ objectFit: 'cover' }} />
         <div
           style={{
             position: 'absolute',
@@ -48,10 +45,9 @@ export default async function handler(req: NextRequest) {
             position: 'absolute',
             width: '100%',
             fontSize: 60,
-            textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           }}
         >
-          {title}
+          {searchParams.get('title')}
         </h2>
         <div
           style={{
@@ -59,19 +55,11 @@ export default async function handler(req: NextRequest) {
             position: 'absolute',
             width: '100%',
             bottom: 0,
-            paddingLeft: 30,
-            paddingRight: 30,
             justifyContent: 'space-between',
+            fontSize: 40,
           }}
         >
-          <h2
-            style={{
-              fontSize: 40,
-              textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            }}
-          >
-            {date}
-          </h2>
+          <h2>{searchParams.get('date')}</h2>
           <div
             style={{
               display: 'flex',
@@ -84,16 +72,9 @@ export default async function handler(req: NextRequest) {
               alt={'avatar'}
               width="60"
               height="60"
-              style={{ borderRadius: 60, marginRight: 10 }}
+              style={{ marginRight: 10 }}
             />
-            <h2
-              style={{
-                fontSize: 40,
-                textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-              }}
-            >
-              さいじょー
-            </h2>
+            <h2>さいじょー</h2>
           </div>
         </div>
       </div>
@@ -101,13 +82,13 @@ export default async function handler(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-      // fonts: [
-      //   {
-      //     name: 'MPLUSRounded1c',
-      //     data: fontData,
-      //     style: 'normal',
-      //   },
-      // ],
+      fonts: [
+        {
+          name: 'MPLUSRounded1c',
+          data: fontData,
+          style: 'normal',
+        },
+      ],
     }
   );
 }
