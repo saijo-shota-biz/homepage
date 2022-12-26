@@ -1,5 +1,9 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const config = {
   reactStrictMode: true,
   images: {
     domains: ['images.microcms-assets.io'],
@@ -14,3 +18,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = withBundleAnalyzer(config);
