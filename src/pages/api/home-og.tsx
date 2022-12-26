@@ -6,13 +6,7 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-const font = fetch(new URL('../../../public/assets/MPLUSRounded1c-Bold-subset.woff', import.meta.url)).then((res) =>
-  res.arrayBuffer()
-);
-
 export default async function handler(req: NextRequest) {
-  const fontData = await font;
-
   return new ImageResponse(
     (
       <div
@@ -44,13 +38,6 @@ export default async function handler(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-      fonts: [
-        {
-          name: 'MPLUSRounded1c',
-          data: fontData,
-          style: 'normal',
-        },
-      ],
     }
   );
 }
