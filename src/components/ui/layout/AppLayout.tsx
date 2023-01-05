@@ -26,7 +26,7 @@ export const AppLayout: FC<Props> = ({ children }) => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100%',
+          minHeight: '100%',
         }}
       >
         <Stack alignItems={'center'} component={'header'} sx={{ marginY: 4 }}>

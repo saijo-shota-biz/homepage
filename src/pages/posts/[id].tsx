@@ -21,7 +21,7 @@ const Post: NextPage<Props> = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{post.title} - システム屋さいじょう</title>
+        <title>{`${post.title} - システム屋さいじょう`}</title>
         <meta property="og:url" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/posts/${post.id}`} />
         <meta property="og:title" content={`${post.title} - システム屋さいじょう`} />
         <meta property="og:description" content={summary} />
