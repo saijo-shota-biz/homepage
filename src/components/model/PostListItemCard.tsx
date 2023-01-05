@@ -32,7 +32,7 @@ export const PostListItemCard: FC<Props> = ({ post }) => {
           })}
         >
           <CardMedia component="img" height="250px" image={post.eyecatch.url} alt={post.title} />
-          <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
+          <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', width: '100%' }}>
             <PostTitle post={post} />
             <PostDate post={post} />
             <PostSummary post={post} />

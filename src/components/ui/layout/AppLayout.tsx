@@ -32,7 +32,7 @@ export const AppLayout: FC<Props> = ({ children }) => {
         <Stack alignItems={'center'} component={'header'} sx={{ marginY: 4 }}>
           <AppHeader />
         </Stack>
-        <Box component={'main'} sx={{ flexGrow: 1 }}>
+        <Box component={'main'} sx={{ flexGrow: 1, width: '100%' }}>
           {children}
         </Box>
         <Stack alignItems={'center'} component={'footer'} sx={{ marginY: 4 }}>
