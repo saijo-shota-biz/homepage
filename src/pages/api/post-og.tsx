@@ -34,15 +34,17 @@ export default async function handler(req: NextRequest) {
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
           }}
         ></div>
-        <h2
+        <div
           style={{
+            display: 'flex',
             position: 'absolute',
             width: '100%',
+            justifyContent: 'center',
             fontSize: 60,
           }}
         >
-          {searchParams.get('title')}
-        </h2>
+          <h2>{searchParams.get('title')}</h2>
+        </div>
         <div
           style={{
             display: 'flex',
@@ -53,11 +55,12 @@ export default async function handler(req: NextRequest) {
             fontSize: 40,
           }}
         >
-          <h2>{searchParams.get('date')}</h2>
+          <h2 style={{ marginLeft: '40px' }}>{searchParams.get('date')}</h2>
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
+              marginRight: '40px',
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

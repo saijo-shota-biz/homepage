@@ -18,13 +18,15 @@ type Props = {
 const Post: NextPage<Props> = ({ post }) => {
   const summary = createSummary(post.content);
 
+  const description = summary.length < 100 ? summary : `${summary.substring(0, 97)}...`;
   return (
     <>
       <Head>
         <title>{`${post.title} - システム屋さいじょう`}</title>
+        <meta name="description" content={description} />
         <meta property="og:url" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/posts/${post.id}`} />
         <meta property="og:title" content={`${post.title} - システム屋さいじょう`} />
-        <meta property="og:description" content={summary} />
+        <meta property="og:description" content={description} />
         <meta
           property="og:image"
           content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/post-og?title=${post.title}&img=${

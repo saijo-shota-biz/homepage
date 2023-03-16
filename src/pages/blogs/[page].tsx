@@ -17,6 +17,7 @@ type Props = {
 };
 
 const DISPLAY_PER_PAGE = 10;
+const DESCRIPTION = 'フリーランスのフロントエンドエンジニア React/Next/Typescript';
 
 const Page: NextPage<Props> = ({ page, blogPostList }) => {
   const pageCount = useMemo(() => Math.ceil(blogPostList.totalCount / DISPLAY_PER_PAGE), [blogPostList]);
@@ -25,9 +26,10 @@ const Page: NextPage<Props> = ({ page, blogPostList }) => {
     <>
       <Head>
         <title>システム屋さいじょう</title>
+        <meta name="description" content={DESCRIPTION} />
         <meta property="og:url" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/blogs/${page}`} />
         <meta property="og:title" content={`システム屋さいじょう`} />
-        <meta property="og:description" content="フリーランスのフロントエンドエンジニア React/Next/Typescript" />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:image" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/home-og`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="システム屋さいじょう" />
