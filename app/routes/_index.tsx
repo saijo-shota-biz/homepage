@@ -21,8 +21,12 @@ export default function Index() {
   const { list } = useLoaderData<typeof loader>();
   return (
     <ul>
+      <li>
+        <Link to={`/${list.find(e => e.path === "README.md")?.sha}`}>自己紹介</Link>
+      </li>
       {list
         .filter((item) => item.path !== "README.md")
+        .sort((a, b) =>  Number(b.path?.split(".")[0]) - Number(a.path?.split(".")[0]))
         .map((item) => {
           return (
             <li key={item.sha}>
