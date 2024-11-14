@@ -1,82 +1,43 @@
 {
-  "name": "nextjs-with-typescript",
-  "version": "5.0.0",
+  "name": "homepage",
   "private": true,
+  "sideEffects": false,
+  "type": "module",
   "scripts": {
-    "dev": "next dev -p 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "analyze-bundle": "ANALYZE=true next build"
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "start": "remix-serve ./build/server/index.js",
+    "typecheck": "tsc"
   },
   "dependencies": {
-    "@emotion/cache": "11.10.5",
-    "@emotion/react": "11.10.5",
-    "@emotion/server": "11.10.0",
-    "@emotion/styled": "11.10.5",
-    "@mui/icons-material": "5.10.15",
-    "@mui/material": "5.10.15",
-    "@next/font": "13.0.5",
-    "@vercel/og": "^0.0.21",
-    "cheerio": "^1.0.0-rc.12",
-    "date-fns": "^2.29.3",
-    "immer": "^9.0.16",
-    "microcms-js-sdk": "^2.3.2",
-    "next": "13.0.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "use-immer": "^0.8.1"
+    "@remix-run/node": "^2.14.0",
+    "@remix-run/react": "^2.14.0",
+    "@remix-run/serve": "^2.14.0",
+    "isbot": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.1.1",
-    "@types/cheerio": "^0.22.31",
-    "@types/date-fns": "^2.6.0",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "eslint": "8.22.0",
-    "eslint-config-next": "13.0.5",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.8.0",
-    "typescript": "4.9.3"
+    "@remix-run/dev": "^2.14.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.38.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.1.6",
+    "vite": "^5.1.0",
+    "vite-tsconfig-paths": "^4.2.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "next/core-web-vitals",
-      "prettier"
-    ],
-    "rules": {
-      "react/display-name": "off",
-      "import/order": [
-        "error",
-        {
-          "groups": [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-            "object"
-          ],
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ],
-      "import/default": "off",
-      "eol-last": [
-        "error",
-        "always"
-      ],
-      "react-hooks/exhaustive-deps": "off",
-      "curly": "error"
-    }
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": true,
-    "printWidth": 120
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
