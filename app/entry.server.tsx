@@ -1,5 +1,5 @@
-import { RemixServer } from '@remix-run/react';
-import { type EntryContext, handleRequest } from '@vercel/remix';
+import { RemixServer } from "@remix-run/react";
+import { type EntryContext, handleRequest } from "@vercel/remix";
 
 export default async function (
   request: Request,
@@ -8,10 +8,5 @@ export default async function (
   remixContext: EntryContext,
 ) {
   const remixServer = <RemixServer context={remixContext} url={request.url} />;
-  return handleRequest(
-    request,
-    responseStatusCode,
-    responseHeaders,
-    remixServer,
-  );
+  return handleRequest(request, responseStatusCode, responseHeaders, remixServer);
 }
