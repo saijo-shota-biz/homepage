@@ -1,5 +1,6 @@
 import { Code, Home, Layers3, Lightbulb, NotebookPen, User } from 'lucide-react';
 
+import { Link } from '@remix-run/react';
 import {
   Sidebar,
   SidebarContent,
@@ -95,10 +96,10 @@ export function AppSidebar() {
                 {group.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url}>
+                      <Link to={item.url}>
                         <item.icon />
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}

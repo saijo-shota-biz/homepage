@@ -3,7 +3,7 @@ import { loaderFunction } from '~/routes/_app._index._$sha/loader.server';
 import { View } from '~/routes/_app._index._$sha/view';
 
 export const handle = {
-  Breadcrumb: ({ sha }: Awaited<ReturnType<typeof loader>>) => <Link to={`/idea/${sha}`}>{sha}</Link>,
+  Breadcrumb: ({ sha }: Awaited<ReturnType<typeof loader>>) => <Link to={`/blog/${sha}`}>{sha}</Link>,
 };
 
 export const loader = loaderFunction;

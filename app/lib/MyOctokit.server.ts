@@ -1,9 +1,10 @@
-import { throttling } from "@octokit/plugin-throttling";
-import { Octokit } from "octokit";
+import { throttling } from '@octokit/plugin-throttling';
+import { Octokit } from 'octokit';
 
 const MyOctokit = Octokit.plugin(throttling);
 
 export const myOctokit = new MyOctokit({
+  auth: process.env.GITHUB_TOKEN,
   throttle: {
     onRateLimit: (retryAfter, options, octokit, retryCount) => {
       octokit.log.warn(`Request quota exhausted for request ${options.method} ${options.url}`);
