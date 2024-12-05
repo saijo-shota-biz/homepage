@@ -1,6 +1,6 @@
-import { Code, Home, Layers3, Lightbulb, NotebookPen, User } from 'lucide-react';
-
-import { Link } from '@remix-run/react';
+import type {LucideProps} from "lucide-react";
+import {Code, Home, Layers3, Lightbulb, NotebookPen, User} from 'lucide-react';
+import {Link} from '@remix-run/react';
 import {
   Sidebar,
   SidebarContent,
@@ -11,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '~/components/ui/sidebar';
+import type {ForwardRefExoticComponent, RefAttributes} from "react";
 
 const Github = () => (
   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -26,24 +27,33 @@ const Twitter = () => (
   </svg>
 );
 
+export const Icons: { [x: string]: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> } = {
+  "home": Home,
+  "about": User,
+  "career": Layers3,
+  "idea": Lightbulb,
+  "tech": Code,
+  "blog": NotebookPen,
+}
+
 const itemGroups = [
   {
-    label: "Saijo Shota",
+    label: "saijo shota",
     items: [
       {
         title: "Home",
         url: "/",
-        icon: Home,
+        icon: Icons.home,
       },
       {
         title: "自己紹介",
         url: "/about",
-        icon: User,
+        icon: Icons.about,
       },
       {
         title: "経歴書",
         url: "/career",
-        icon: Layers3,
+        icon: Icons.career,
       },
     ],
   },
@@ -53,17 +63,17 @@ const itemGroups = [
       {
         title: "考えてみた",
         url: "/idea",
-        icon: Lightbulb,
+        icon: Icons.idea,
       },
       {
         title: "技術",
         url: "/tech",
-        icon: Code,
+        icon: Icons.tech,
       },
       {
         title: "ブログ",
         url: "/blog",
-        icon: NotebookPen,
+        icon: Icons.blog,
       },
     ],
   },

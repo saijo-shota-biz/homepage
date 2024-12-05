@@ -1,4 +1,4 @@
-import { useMatches } from '@remix-run/react';
+import {useMatches} from '@remix-run/react';
 
 export const Breadcrumbs = () => {
   const matches = useMatches();

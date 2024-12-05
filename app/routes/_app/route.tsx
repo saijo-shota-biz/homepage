@@ -1,12 +1,12 @@
-import { Link, Outlet } from '@remix-run/react';
-import { SidebarProvider, SidebarTrigger } from '~/components/ui/sidebar';
-import { useIsMobile } from '~/hooks/use-mobile';
-import { AppSidebar } from '~/routes/_app/app-sidebar';
-import { Breadcrumbs } from '~/routes/_app/breadcrumbs';
-import { loaderFunction } from '~/routes/_app/loader.server';
+import {Link, Outlet} from '@remix-run/react';
+import {SidebarProvider, SidebarTrigger} from '~/components/ui/sidebar';
+import {useIsMobile} from '~/hooks/use-mobile';
+import {AppSidebar} from '~/routes/_app/app-sidebar';
+import {Breadcrumbs} from '~/routes/_app/breadcrumbs';
+import {loaderFunction} from '~/routes/_app/loader.server';
 
 export const handle = {
-  Breadcrumb: () => <Link to="/">saijo.shota</Link>,
+  Breadcrumb: () => <Link to="/">saijo shota</Link>,
 };
 
 export const meta = () => {};
@@ -24,13 +24,13 @@ export default function Route() {
           <nav className="h-20 p-4 grid grid-cols-[1fr_auto_1fr] justify-stretch items-center">
             <SidebarTrigger />
             <h1 className="flex flex-row">
-              <Link to="/">Saijo Shota</Link>
+              <Link to="/">saijo shota</Link>
             </h1>
           </nav>
         )}
         <div className="flex-1">
           {!isMobile && (
-            <nav className="grid grid-cols-[28px_auto] justify-stretch items-center">
+            <nav className="p-2 grid grid-cols-[28px_auto] gap-2 justify-stretch items-center">
               <SidebarTrigger />
               <Breadcrumbs />
             </nav>
