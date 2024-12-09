@@ -32,7 +32,7 @@ export const loader = async () => {
   });
   // @ts-ignore
   const markdown = Buffer.from(response.data.content, "base64").toString("utf-8");
-  const html = markdownToHtml(markdown);
+  const html = await markdownToHtml(markdown);
   return { html };
 };
 
