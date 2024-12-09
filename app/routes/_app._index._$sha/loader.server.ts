@@ -1,7 +1,7 @@
-import type { LoaderFunctionArgs } from '@remix-run/node';
-import invariant from 'tiny-invariant';
-import { myOctokit } from '~/lib/MyOctokit.server';
-import { markdownToHtml } from '~/lib/markdownToHtml.server';
+import type { LoaderFunctionArgs } from "@remix-run/node";
+import invariant from "tiny-invariant";
+import { myOctokit } from "~/lib/MyOctokit.server";
+import { markdownToHtml } from "~/lib/markdownToHtml.server";
 
 export const loaderFunction = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.sha, "sha is required");

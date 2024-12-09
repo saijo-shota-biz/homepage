@@ -1,4 +1,4 @@
-import { Link, Outlet } from '@remix-run/react';
+import { Link, Outlet } from "@remix-run/react";
 
 export const handle = {
   Breadcrumb: () => <Link to={"/tech"}>tech</Link>,

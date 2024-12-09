@@ -1,15 +1,37 @@
-import {Link, Outlet} from '@remix-run/react';
-import {SidebarProvider, SidebarTrigger} from '~/components/ui/sidebar';
-import {useIsMobile} from '~/hooks/use-mobile';
-import {AppSidebar} from '~/routes/_app/app-sidebar';
-import {Breadcrumbs} from '~/routes/_app/breadcrumbs';
-import {loaderFunction} from '~/routes/_app/loader.server';
+import { Link, Outlet } from "@remix-run/react";
+import type { MetaFunction } from "@vercel/remix";
+import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
+import { useIsMobile } from "~/hooks/use-mobile";
+import { AppSidebar } from "~/routes/_app/app-sidebar";
+import { Breadcrumbs } from "~/routes/_app/breadcrumbs";
+import { loaderFunction } from "~/routes/_app/loader.server";
 
 export const handle = {
   Breadcrumb: () => <Link to="/">saijo shota</Link>,
 };
 
-export const meta = () => {};
+export const title = "saijo shota's homepage";
+const description =
+  "saijo shotaのホームページです。Reactと静的型付け言語が好きです。主にブログや考えを書いたりしています。";
+const siteUrl = "https://www.systemya-saijo.com";
+const ogpUrl = `${siteUrl}/ogp.png`;
+
+export const meta: MetaFunction = () => [
+  { title },
+  { name: "description", content: description },
+  { property: "og:title", content: title },
+  { property: "og:description", content: description },
+  { property: "og:site_name", content: title },
+  { property: "og:type", content: "website" },
+  { property: "og:url", content: siteUrl },
+  { property: "og:image", content: ogpUrl },
+  { name: "twitter:title", content: title },
+  { name: "twitter:description", content: description },
+  { name: "twitter:card", content: "summary" },
+  { name: "twitter:image", content: ogpUrl },
+  { name: "twitter:site", content: "@saijo_shota" },
+  { name: "twitter:creator", content: "@saijo_shota" },
+];
 
 export const loader = loaderFunction;
 

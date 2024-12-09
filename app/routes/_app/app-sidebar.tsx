@@ -1,6 +1,7 @@
-import type {LucideProps} from "lucide-react";
-import {Code, Home, Layers3, Lightbulb, NotebookPen, User} from 'lucide-react';
-import {Link} from '@remix-run/react';
+import { Link } from "@remix-run/react";
+import type { LucideProps } from "lucide-react";
+import { Code, Home, Layers3, Lightbulb, NotebookPen, User } from "lucide-react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -9,9 +10,8 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem
-} from '~/components/ui/sidebar';
-import type {ForwardRefExoticComponent, RefAttributes} from "react";
+  SidebarMenuItem,
+} from "~/components/ui/sidebar";
 
 const Github = () => (
   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -27,14 +27,16 @@ const Twitter = () => (
   </svg>
 );
 
-export const Icons: { [x: string]: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> } = {
-  "home": Home,
-  "about": User,
-  "career": Layers3,
-  "idea": Lightbulb,
-  "tech": Code,
-  "blog": NotebookPen,
-}
+export const Icons: {
+  [x: string]: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+} = {
+  home: Home,
+  about: User,
+  career: Layers3,
+  idea: Lightbulb,
+  tech: Code,
+  blog: NotebookPen,
+};
 
 const itemGroups = [
   {

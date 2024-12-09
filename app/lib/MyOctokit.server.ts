@@ -1,5 +1,5 @@
-import { throttling } from '@octokit/plugin-throttling';
-import { Octokit } from 'octokit';
+import { throttling } from "@octokit/plugin-throttling";
+import { Octokit } from "octokit";
 
 const MyOctokit = Octokit.plugin(throttling);
 

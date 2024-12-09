@@ -1,4 +1,4 @@
-import { myOctokit } from '~/lib/MyOctokit.server';
+import { myOctokit } from "~/lib/MyOctokit.server";
 
 export const loaderFunction = async () => {
   const main = await myOctokit.request("GET /repos/{owner}/{repo}/git/trees/{tree_sha}", {

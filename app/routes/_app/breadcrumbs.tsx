@@ -1,4 +1,4 @@
-import {useMatches} from '@remix-run/react';
+import { useMatches } from "@remix-run/react";
 
 export const Breadcrumbs = () => {
   const matches = useMatches();
@@ -18,5 +18,5 @@ export const Breadcrumbs = () => {
           </li>
         ))}
     </ol>
-  )
-}
+  );
+};
