@@ -11,6 +11,6 @@ export const loaderFunction = async ({ params }: LoaderFunctionArgs) => {
     file_sha: params.sha,
   });
   const markdown = Buffer.from(response.data.content, "base64").toString("utf-8");
-  const html = markdownToHtml(markdown);
+  const html = await markdownToHtml(markdown);
   return { html, sha: params.sha };
 };
