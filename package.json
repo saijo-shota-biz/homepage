@@ -1,82 +1,51 @@
 {
-  "name": "nextjs-with-typescript",
-  "version": "5.0.0",
+  "name": "homepage",
   "private": true,
+  "sideEffects": false,
+  "type": "module",
   "scripts": {
-    "dev": "next dev -p 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "analyze-bundle": "ANALYZE=true next build"
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "check": "npx @biomejs/biome check --write ./app",
+    "start": "remix-serve ./build/server/index.js",
+    "typecheck": "tsc"
   },
   "dependencies": {
-    "@emotion/cache": "11.10.5",
-    "@emotion/react": "11.10.5",
-    "@emotion/server": "11.10.0",
-    "@emotion/styled": "11.10.5",
-    "@mui/icons-material": "5.10.15",
-    "@mui/material": "5.10.15",
-    "@next/font": "13.0.5",
-    "@vercel/og": "^0.0.21",
-    "cheerio": "^1.0.0-rc.12",
-    "date-fns": "^2.29.3",
-    "immer": "^9.0.16",
-    "microcms-js-sdk": "^2.3.2",
-    "next": "13.0.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "use-immer": "^0.8.1"
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.4",
+    "@remix-run/node": "^2.14.0",
+    "@remix-run/react": "^2.14.0",
+    "@remix-run/serve": "^2.14.0",
+    "@vercel/remix": "^2.14.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "isbot": "^4.1.0",
+    "lucide-react": "^0.460.0",
+    "octokit": "^4.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "tiny-invariant": "^1.3.3",
+    "zenn-content-css": "^0.1.158",
+    "zenn-markdown-html": "^0.1.158"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.1.1",
-    "@types/cheerio": "^0.22.31",
-    "@types/date-fns": "^2.6.0",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "eslint": "8.22.0",
-    "eslint-config-next": "13.0.5",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.8.0",
-    "typescript": "4.9.3"
+    "@biomejs/biome": "1.9.4",
+    "@remix-run/dev": "^2.14.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.1.6",
+    "vite": "^5.1.0",
+    "vite-tsconfig-paths": "^4.2.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "next/core-web-vitals",
-      "prettier"
-    ],
-    "rules": {
-      "react/display-name": "off",
-      "import/order": [
-        "error",
-        {
-          "groups": [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-            "object"
-          ],
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ],
-      "import/default": "off",
-      "eol-last": [
-        "error",
-        "always"
-      ],
-      "react-hooks/exhaustive-deps": "off",
-      "curly": "error"
-    }
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": true,
-    "printWidth": 120
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
