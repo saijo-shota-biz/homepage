@@ -4,7 +4,7 @@ export const loaderFunction = async () => {
   const main = await myOctokit.rest.git.getTree({
     owner: "saijo-shota-biz",
     repo: "saijo-shota-biz",
-    tree_sha: "main",
+    tree_sha: "draft",
   });
   const trees = await Promise.all(
     main.data.tree.map(async (item) => {
