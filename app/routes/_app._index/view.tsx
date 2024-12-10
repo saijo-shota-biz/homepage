@@ -7,12 +7,7 @@ type Props = Awaited<ReturnType<typeof loader>>;
 
 export const View = ({ list }: Props) => {
   return (
-    <section
-      className="grid gap-8"
-      style={{
-        gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-      }}
-    >
+    <section className="grid lg:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-8">
       {list.map((item) => {
         const Icon = Icons[item.category];
         return (

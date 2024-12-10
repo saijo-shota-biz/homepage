@@ -1,7 +1,7 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import type { LucideProps } from "lucide-react";
 import { Code, Home, Layers3, Lightbulb, NotebookPen, User } from "lucide-react";
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import { type ForwardRefExoticComponent, type RefAttributes, useEffect } from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -9,8 +9,10 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "~/components/ui/sidebar";
 
 const Github = () => (
@@ -43,16 +45,19 @@ const itemGroups = [
     label: "saijo shota",
     items: [
       {
+        key: "home",
         title: "Home",
         url: "/",
         icon: Icons.home,
       },
       {
+        key: "about",
         title: "自己紹介",
         url: "/about",
         icon: Icons.about,
       },
       {
+        key: "career",
         title: "経歴書",
         url: "/career",
         icon: Icons.career,
@@ -63,16 +68,19 @@ const itemGroups = [
     label: "記事",
     items: [
       {
+        key: "idea",
         title: "考えてみた",
         url: "/idea",
         icon: Icons.idea,
       },
       {
+        key: "tech",
         title: "技術",
         url: "/tech",
         icon: Icons.tech,
       },
       {
+        key: "blog",
         title: "ブログ",
         url: "/blog",
         icon: Icons.blog,
@@ -83,11 +91,13 @@ const itemGroups = [
     label: "リンク",
     items: [
       {
+        key: "github",
         title: "GitHub",
         url: "https://github.com/saijo-shota-biz",
         icon: Github,
       },
       {
+        key: "twitter",
         title: "X(Twitter)",
         url: "https://x.com/saijo_shota",
         icon: Twitter,
@@ -96,7 +106,19 @@ const itemGroups = [
   },
 ];
 
-export function AppSidebar() {
+type Props = {
+  categoryArticleCount: {
+    [category: string]: number;
+  };
+};
+
+export function AppSidebar({ categoryArticleCount }: Props) {
+  const location = useLocation();
+  const { setOpenMobile } = useSidebar();
+  // biome-ignore lint/correctness/useExhaustiveDependencies: location.pathnameが切り替わったらメニューを閉じる
+  useEffect(() => {
+    setOpenMobile(false);
+  }, [location.pathname, setOpenMobile]);
   return (
     <Sidebar>
       <SidebarContent>
@@ -113,6 +135,9 @@ export function AppSidebar() {
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
+                    {categoryArticleCount[item.key] > 0 && (
+                      <SidebarMenuBadge>{categoryArticleCount[item.key]}</SidebarMenuBadge>
+                    )}
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>

@@ -1,4 +1,4 @@
-import { Link, Outlet } from "@remix-run/react";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@vercel/remix";
 import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
 import { useIsMobile } from "~/hooks/use-mobile";
@@ -36,12 +36,21 @@ export const meta: MetaFunction = () => [
 export const loader = loaderFunction;
 
 export default function Route() {
+  const { list } = useLoaderData<typeof loader>();
   const isMobile = useIsMobile();
 
   return (
     <>
       <SidebarProvider className={isMobile ? "flex-col" : "flex-row"}>
-        <AppSidebar />
+        <AppSidebar
+          categoryArticleCount={list.reduce(
+            (p, c) => {
+              p[c.category] = (p[c.category] || 0) + 1;
+              return p;
+            },
+            {} as Record<string, number>,
+          )}
+        />
         {isMobile && (
           <nav className="h-20 p-4 grid grid-cols-[1fr_auto_1fr] justify-stretch items-center">
             <SidebarTrigger />
