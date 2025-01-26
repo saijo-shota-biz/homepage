@@ -11,7 +11,7 @@ export const handle = {
 
 const title = `自己紹介 - ${baseTitle}`;
 const description =
-  "saijo shotaの自己紹介です。読んでいただければ大体どんな人間かがわかると思います。もしよかったらX(Twitter)で連絡していただければうれしいです。";
+  "saijo shotaの自己紹介です。読んでいただければ大体どんな人間かがわかると思います。もしよかったらX(Twitter)かメールで連絡していただければうれしいです。";
 
 export const meta: MetaFunction = () => [
   { title },

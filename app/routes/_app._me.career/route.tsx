@@ -10,7 +10,7 @@ export const handle = {
 };
 
 const title = `経歴書 - ${baseTitle}`;
-const description = "saijo shotaの経歴書です。お仕事/カジュアル面談はX(Twitter)のDMでお待ちしております。";
+const description = "saijo shotaの経歴書です。お仕事/カジュアル面談はX(Twitter)のDMかメールでお待ちしております。";
 
 export const meta: MetaFunction = () => [
   { title },
