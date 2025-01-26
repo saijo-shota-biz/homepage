@@ -1,8 +1,8 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@vercel/remix";
+import { ArticleView } from "~/components/article/articleView";
 import { myOctokit } from "~/lib/MyOctokit.server";
 import { markdownToHtml } from "~/lib/markdownToHtml.server";
-import { View } from "~/routes/_app._index._$sha/view";
 import { title as baseTitle } from "~/routes/_app/route";
 
 export const handle = {
@@ -38,5 +38,5 @@ export const loader = async () => {
 
 export default function Route() {
   const { html } = useLoaderData<typeof loader>();
-  return <View html={html} />;
+  return <ArticleView html={html} />;
 }

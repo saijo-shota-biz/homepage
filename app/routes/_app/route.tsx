@@ -1,10 +1,9 @@
-import { Link, Outlet, useLoaderData } from "@remix-run/react";
+import { Link, Outlet } from "@remix-run/react";
 import type { MetaFunction } from "@vercel/remix";
 import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
 import { useIsMobile } from "~/hooks/use-mobile";
 import { AppSidebar } from "~/routes/_app/app-sidebar";
 import { Breadcrumbs } from "~/routes/_app/breadcrumbs";
-import { loaderFunction } from "~/routes/_app/loader.server";
 
 export const handle = {
   Breadcrumb: () => <Link to="/">saijo shota</Link>,
@@ -12,7 +11,7 @@ export const handle = {
 
 export const title = "saijo shota's homepage";
 const description =
-  "saijo shotaのホームページです。Reactと静的型付け言語が好きです。主にブログや考えを書いたりしています。";
+  "saijo shotaのホームページです。フリーランスでエンジアをしています。Reactと静的型付け言語が好きです。";
 const siteUrl = "https://www.systemya-saijo.com";
 const ogpUrl = `${siteUrl}/ogp.png`;
 
@@ -33,24 +32,13 @@ export const meta: MetaFunction = () => [
   { name: "twitter:creator", content: "@saijo_shota" },
 ];
 
-export const loader = loaderFunction;
-
 export default function Route() {
-  const { list } = useLoaderData<typeof loader>();
   const isMobile = useIsMobile();
 
   return (
     <>
       <SidebarProvider className={isMobile ? "flex-col" : "flex-row"}>
-        <AppSidebar
-          categoryArticleCount={list.reduce(
-            (p, c) => {
-              p[c.category] = (p[c.category] || 0) + 1;
-              return p;
-            },
-            {} as Record<string, number>,
-          )}
-        />
+        <AppSidebar />
         {isMobile && (
           <nav className="h-20 p-4 grid grid-cols-[1fr_auto_1fr] justify-stretch items-center">
             <SidebarTrigger />

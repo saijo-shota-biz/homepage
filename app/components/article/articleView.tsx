@@ -4,7 +4,7 @@ type Props = {
   html: string;
 };
 
-export const View = ({ html }: Props) => {
+export const ArticleView = ({ html }: Props) => {
   return (
     <div className="md:px-24">
       {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}

@@ -8,7 +8,6 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
@@ -74,29 +73,6 @@ const itemGroups = [
     ],
   },
   {
-    label: "記事",
-    items: [
-      {
-        key: "idea",
-        title: "考えてみた",
-        url: "/idea",
-        icon: Icons.idea,
-      },
-      {
-        key: "tech",
-        title: "技術",
-        url: "/tech",
-        icon: Icons.tech,
-      },
-      {
-        key: "blog",
-        title: "ブログ",
-        url: "/blog",
-        icon: Icons.blog,
-      },
-    ],
-  },
-  {
     label: "リンク",
     items: [
       {
@@ -121,13 +97,7 @@ const itemGroups = [
   },
 ];
 
-type Props = {
-  categoryArticleCount: {
-    [category: string]: number;
-  };
-};
-
-export function AppSidebar({ categoryArticleCount }: Props) {
+export function AppSidebar() {
   const location = useLocation();
   const { setOpenMobile } = useSidebar();
   // biome-ignore lint/correctness/useExhaustiveDependencies: location.pathnameが切り替わったらメニューを閉じる
@@ -150,9 +120,6 @@ export function AppSidebar({ categoryArticleCount }: Props) {
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
-                    {categoryArticleCount[item.key] > 0 && (
-                      <SidebarMenuBadge>{categoryArticleCount[item.key]}</SidebarMenuBadge>
-                    )}
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
